@@ -317,6 +317,34 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
+    // ---------- 8.1. COOKIE CONSENT BANNER ----------
+    if (!localStorage.getItem('cookieConsent')) {
+        const banner = document.createElement('div');
+        banner.className = 'cookie-banner';
+        banner.innerHTML = `
+            <p>We use cookies to analyze website traffic and optimize your agency experience. By continuing to browse, you agree to our <a href="privacy.html">Privacy Policy</a>.</p>
+            <div class="cookie-banner-actions">
+                <button class="cookie-banner-btn accept">Accept</button>
+            </div>
+        `;
+        document.body.appendChild(banner);
+        
+        // Trigger animation
+        setTimeout(() => {
+            banner.classList.add('show');
+        }, 100);
+
+        const acceptBtn = banner.querySelector('.accept');
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookieConsent', 'accepted');
+            banner.classList.remove('show');
+            banner.classList.add('hide');
+            setTimeout(() => {
+                banner.remove();
+            }, 400);
+        });
+    }
+
     // ---------- 9. FIX FOR MOBILE VH UNITS ----------
     const setVH = () => {
         let vh = window.innerHeight * 0.01;
