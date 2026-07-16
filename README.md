@@ -47,7 +47,7 @@ Since this is a static website, running it locally is incredibly simple:
 ├── design.js        # Light/dark mode toggle, typing text animation, and mobile navigation
 ├── README.md        # Project documentation
 ├── favicon.png      # Custom tab icon
-└── pfp.jpg          # Profile image
+└── pfp.png          # Profile image
 ```
 
 ---
